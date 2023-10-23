@@ -4,7 +4,7 @@ public class GrandChild {
 	public static void main(String[] args) {
 		String[][]family=familyDetails();
 		String fatherName=fatherName();
-		System.out.println(fatherName+" has "+countGrandChildren(family,fatherName)+ "grandChildren");
+		System.out.println("----->"+fatherName+" has "+countGrandChildren(family,fatherName)+ " grandChildren");
 	}
 
 	private static String[][] familyDetails() {
@@ -27,7 +27,7 @@ public class GrandChild {
 	private static String fatherName() {
 		Scanner scan=new Scanner(System.in);
 		String fatherName;
-		System.out.print("Enter Father Name :");
+		System.out.print("----->Enter Father Name to find GrandChildren:");
 	     fatherName = scan.nextLine();
 	      return fatherName;
 	}
