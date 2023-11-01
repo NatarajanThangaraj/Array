@@ -30,6 +30,7 @@ public class GrandChild {
 		System.out.print("----->Enter Father Name to find GrandChildren:");
 	     fatherName = scan.nextLine();
 	      return fatherName;
+	      
 	}
     
 	private static int countGrandChildren(String[][]arr,String father) {
