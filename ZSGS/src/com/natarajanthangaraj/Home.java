@@ -4,17 +4,15 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Home {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Scanner scan = new Scanner(System.in);
 		ArrayList<File> packages = new ArrayList<>();
 		setPackages(packages);
 		int gate = 1;
 		do {
 			showPackages(packages);
-			System.out.print("Enter Package Number ( '0' to Exit ) : ");
+			System.out.print("Enter Package Number [ '0' to Exit ] : ");
 			int select = scan.nextInt();
 			if (select == 0) {
 				break;
@@ -23,10 +21,19 @@ public class Home {
 			if (select <= packages.size()) {
 				selectedPackage = packages.get(select - 1);
 			} else {
-				System.out.println("Invalid Number ->");
+				System.out.println("<-<-<-<-<- Invalid Number ->->->->->");
 				continue;
 			}
 			File[] classes = selectedPackage.listFiles();
+			showClasses(classes);
+			System.out.print("Select any Pattern [ '0' to Exit ] : ");
+			int clazz=scan.nextInt();
+			if (clazz <= classes.length) {
+				excuteMethod(classes[clazz-1]);
+			} else {
+				System.out.println("<-<-<-<-<- Invalid Number ->->->->->");
+				continue;
+			}
 			
 		} while (gate != 0);
 	}
@@ -48,7 +55,20 @@ public class Home {
 		}
 	}
 	 private static void showClasses(File[] classes) {
-		 System.out.println("Classes in ");
+		 System.out.println("----------My Pattern---------");
+		 int index=1;
+		 for(File eachClass:classes) {
+				System.out.println((index++)+" "+eachClass.getName());
+	 }
+	 }
+	 private static void excuteMethod(File selClass) throws Exception {
+		 String path=selClass.getPath().replaceAll("\\\\",".");
+		 String exactPath=path.substring(4,path.length()-5);
+		 Class<?> c=Class.forName(exactPath); 
+		 Method m=c.getDeclaredMethod("main", String[].class);
+		 m.invoke(m, (Object)null);
+		 System.out.println();
+		 
 	 }
 
 }
