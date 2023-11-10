@@ -9,7 +9,6 @@ public class InvertedLeftHalfPyramid {
 		System.out.print("Enter size :");
 		int n=scan.nextInt();
 		starPattern1(n);
-		scan.close();
 	}
 	public static void starPattern1(int n) {
 		for (int i = 1; i <= n; i++) {

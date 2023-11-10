@@ -9,8 +9,6 @@ public class HollowDiamond {
 		System.out.print("Enter size :");
 		int n=scan.nextInt();
 		starPattern(n);
-		scan.close();
-
 	}
 	public static void starPattern(int n) {
 		int i, j, k;

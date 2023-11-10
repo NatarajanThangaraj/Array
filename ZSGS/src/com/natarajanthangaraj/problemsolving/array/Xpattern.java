@@ -1,3 +1,4 @@
+package com.natarajanthangaraj.problemsolving.array;
 import java.util.Scanner;
 public class Xpattern {
 	public static void main(String[] args) {

@@ -1,5 +1,4 @@
 package com.natarajanthangaraj;
-
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.Scanner;
@@ -55,7 +54,6 @@ public class Home {
 		}
 	}
 	 private static void showClasses(File[] classes) {
-		 System.out.println("----------My Pattern---------");
 		 int index=1;
 		 for(File eachClass:classes) {
 				System.out.println((index++)+" "+eachClass.getName());
@@ -65,10 +63,9 @@ public class Home {
 		 String path=selClass.getPath().replaceAll("\\\\",".");
 		 String exactPath=path.substring(4,path.length()-5);
 		 Class<?> c=Class.forName(exactPath); 
+		 System.out.println(exactPath);
 		 Method m=c.getDeclaredMethod("main", String[].class);
 		 m.invoke(m, (Object)null);
-		 System.out.println();
-		 
 	 }
 
 }

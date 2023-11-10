@@ -1,3 +1,4 @@
+package com.natarajanthangaraj.problemsolving.array;
 import java.util.Arrays;
 import java.util.Scanner;
 
