@@ -28,7 +28,10 @@ public class Express {
 				}
 			}
 			else if(symbol.contains(x+"")) {
-				if((s.charAt(i+1)<'a'||s.charAt(i+1)>'z')||(s.charAt(i-1)<'a'||s.charAt(i-1)>'z')) {
+				if(s.charAt(i-1)==')'&&s.charAt(i+1)=='(') {
+					flag=true;
+				}
+				else if((s.charAt(i+1)<'a'||s.charAt(i+1)>'z')||(s.charAt(i-1)<'a'||s.charAt(i-1)>'z')) {
 					flag=false;
 					break;
 				}
