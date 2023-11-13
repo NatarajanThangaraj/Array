@@ -25,7 +25,7 @@ public class Spiral {
 			}
 			left++;
 			bottom -= 2;
-			if (i == right || j == right) {
+			if ( j == right) {
 				i--;
 				j--;
 				while (i > top) {
@@ -35,12 +35,14 @@ public class Spiral {
 				}
 			}
 			right--;
+			
 			if (i == top) {
-				while (j > left) {
+				
+				while (j >left) {
 					j--;
 					arr[i][j] = index++;
+					
 				}
-
 			}
 			i++;
 			j++;
