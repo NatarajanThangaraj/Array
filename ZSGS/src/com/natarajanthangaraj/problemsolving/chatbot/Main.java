@@ -15,6 +15,7 @@ public class Main {
 		Main chatBot = new Main();
 		chatBot.start();
 	}
+	
 
 	private void start() throws Exception {
 		int select;
@@ -39,7 +40,7 @@ public class Main {
 			String path = stack.peek();
 			try {
 			display(parse(path));
-			comeBack();
+			navigation();
 			}catch(Exception e) {
 				System.out.println("Wrong Select ...Please Select Correct Number !");
 			}
@@ -63,20 +64,28 @@ public class Main {
 	}
 
 	private static void introduction() {
+		System.out.println(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ");
 		System.out.println();
-		System.out.println("WELCOME TO 24*7 INDANE AUTOMATED REFILL BOOKING SYSTEM");
-		System.out.println("Your's Distributor : PRIYA GAS AGENCY ");
-		System.out.println("For our Details Your Customer ID's Last Four Digit is : 4 6 8 3");
+		System.out.println("        WELCOME TO 24*7 INDANE AUTOMATED REFILL BOOKING SYSTEM          ");
 		System.out.println();
+		System.out.println("            --- Your's Distributor : PRIYA GAS AGENCY --- ");
+		System.out.println();
+		System.out.println("      For our Details Your Customer ID's Last Four Digit is : 4 6 8 3");
+		System.out.println();
+		System.out.println(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ");
 	}
 
-	private static void comeBack() {
+	private static void navigation() {
+		System.out.println();
 		System.out.println("<----  Press 9 to go back  ---->");
 		System.out.println("****  Press 0 to Exit  ****");
+		System.out.println();
 	}
 
 	private static void conclusion() {
+		System.out.println();
 		System.out.println("FOR MORE DETAILS CONTACT YOUR DISTRIBUTOR ");
-		System.out.println("##### THANK YOU FOR CHOOSING INDANE #####");
+		System.out.println("#####          THANK YOU FOR CHOOSING INDANE        #####");
+		System.out.println();
 	}
 }

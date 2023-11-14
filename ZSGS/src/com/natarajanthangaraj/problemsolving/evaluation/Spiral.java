@@ -13,10 +13,12 @@ public class Spiral {
 
 	private static void makeSpiral(int n) {
 		int[][] arr = new int[n][n];
-		int i = 0, j = 0, index = 1, left = 0, bottom = n, top = 0, right = n;
+		int i = 0, j = 0, index = 1;
+		int left = 0, bottom = n-1;
+		int top = 0, right = n-1;
 		while (true) {
 			if (j == left || i == top) {
-				while (i < bottom) {
+				while (i <=bottom) {
 					arr[i][j] = index++;
 					i++;
 					j++;
@@ -24,40 +26,36 @@ public class Spiral {
 
 			}
 			left++;
+			if (left == n - 2) {
+				break;
+			}
 			bottom -= 2;
+			
 			if ( j == right) {
-				i--;
-				j--;
 				while (i > top) {
 					i--;
 					arr[i][j] = index++;
 
 				}
 			}
-			right--;
 			
-			if (i == top) {
-				
-				while (j >left) {
-					j--;
+			right--;
+				while ((j--)>left) {
 					arr[i][j] = index++;
 					
 				}
-			}
 			i++;
 			j++;
 			top++;
-			if (left == n - 2) {
-				break;
-			}
+			
 		}
 
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < n; j++) {
 				if (arr[i][j] != 0)
-					System.out.print(arr[i][j] + " ");
+					System.out.printf("%3d",arr[i][j]);
 				else {
-					System.out.print("  ");
+					System.out.print("   ");
 				}
 			}
 			System.out.println();
