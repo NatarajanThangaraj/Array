@@ -46,7 +46,7 @@ public class Main implements Runnable{
 	private Order  placeOrder() {
 		Scanner scan=new Scanner(System.in);
 		System.out.print(" Enter the Order Number [like ddmm-num ]:");
-		Order orderNumber=new Order(scan.next());
+		Order orderNumber=new Order(scan.nextLine());
 		return orderNumber;
 	}
 
@@ -76,12 +76,13 @@ public class Main implements Runnable{
 	public void run() {
 		while(!list.isEmpty()) {
 			Order nextOrder=list.remove();
-			System.out.println(nextOrder.getOrderNumber()+" <--- THIS ORDER IS READY ! ");
 			try {
 				Thread.sleep(30000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			System.out.println("          "+nextOrder.getOrderNumber()+" <--- THIS ORDER IS READY ! ");
+			
 		}
 		
 	}
