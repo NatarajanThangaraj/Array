@@ -12,48 +12,36 @@ public class Spiral {
 	}
 
 	private static void makeSpiral(int n) {
-		int[][] arr = new int[n][n];
-		int i = 0, j = 0, index = 1;
+		int[][] mat = new int[n][n];
+		int i = 0, j = 0, count = 1;
 		int left = 0, bottom = n-1;
 		int top = 0, right = n-1;
-		while (true) {
-			if (j == left || i == top) {
-				while (i <=bottom) {
-					arr[i][j] = index++;
-					i++;
-					j++;
-				}
-
+		while (left <= right && top <= bottom) {
+			for ( i = top; i <= bottom; i++) {
+				mat[i][i + top] = count++;
 			}
 			left++;
-			if (left == n - 2) {
-				break;
-			}
-			bottom -= 2;
-			
-			if ( j == right) {
-				while (i > top) {
-					i--;
-					arr[i][j] = index++;
-
+			bottom--;
+			if (left <= right) {
+				for ( i = bottom; i >= top; i--) {
+					mat[i][right] = count++;
 				}
+				right--;
 			}
-			
-			right--;
-				while ((j--)>left) {
-					arr[i][j] = index++;
-					
+			bottom--;
+			if (top <= bottom) {
+				for ( i = right; i >= left; i--) {
+					mat[top][i] = count++;
 				}
-			i++;
-			j++;
-			top++;
-			
+				left++;
+				top++;
+		}
 		}
 
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < n; j++) {
-				if (arr[i][j] != 0)
-					System.out.printf("%3d",arr[i][j]);
+				if (mat[i][j] != 0)
+					System.out.printf("%3d",mat[i][j]);
 				else {
 					System.out.print("   ");
 				}
@@ -61,5 +49,5 @@ public class Spiral {
 			System.out.println();
 		}
 	}
+	}
 
-}
