@@ -9,35 +9,30 @@ public class Express {
 		validOrNot(s);
 	}
 
-	private static void validOrNot(String s) {
-		String symbol="+-*%\\";
+	private static void validOrNot(String s) {	
+		String symbol="+-*%/";
 		char x='a';
 		boolean flag=true;
-		for(int i=1;i<s.length()-1;i++) {
+		int stack=0;
+		for(int i=0;i<s.length();i++) {
 			x=s.charAt(i);
-			if(x=='(') {
-				if(s.charAt(i+1)<'a'||s.charAt(i+1)>'z') {
-					flag=false;
-					break;
-				}
-			}
-			else if(x==')') {
-				if(s.charAt(i-1)<'a'||s.charAt(i-1)>'z') {
-					flag=false;
-					break;
-				}
-			}
-			else if(symbol.contains(x+"")) {
-				if(s.charAt(i-1)==')'&&s.charAt(i+1)=='(') {
-					flag=true;
-				}
-				else if((s.charAt(i+1)<'a'||s.charAt(i+1)>'z')||(s.charAt(i-1)<'a'||s.charAt(i-1)>'z')) {
-					flag=false;
-					break;
-				}
-			}
+		 if(x=='(') {
+			 stack++;
+		 }else if(x==')') {
+			if(stack==0) {
+				flag=false;
+				break;
+			} 
+			stack--;
+		 }else if(symbol.contains(x+"")) {
+			 if(s.charAt(i-1)=='('||s.charAt(i+1)==')') {
+				 flag=false;
+				 break;
+			 }
+		 }
+		 
 		}
-		if(flag) {
+		if(flag&&stack==0) {
 			System.out.println("Valid");
 		}
 		else {
