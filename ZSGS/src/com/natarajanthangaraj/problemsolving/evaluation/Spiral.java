@@ -18,20 +18,20 @@ public class Spiral {
 		int top = 0, right = n-1;
 		while (left <= right && top <= bottom) {
 			for ( i = top; i <= bottom; i++) {
-				mat[i][i + top] = count++;
+				mat[i+top][i] = count++;
 			}
 			left++;
 			bottom--;
 			if (left <= right) {
 				for ( i = bottom; i >= top; i--) {
-					mat[i][right] = count++;
+					mat[right][i] = count++;
 				}
 				right--;
 			}
 			bottom--;
 			if (top <= bottom) {
 				for ( i = right; i >= left; i--) {
-					mat[top][i] = count++;
+					mat[i][top] = count++;
 				}
 				left++;
 				top++;
@@ -41,9 +41,9 @@ public class Spiral {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < n; j++) {
 				if (mat[i][j] != 0)
-					System.out.printf("%3d",mat[i][j]);
+					System.out.printf(" %3d",mat[i][j]);
 				else {
-					System.out.print("   ");
+					System.out.print("  ");
 				}
 			}
 			System.out.println();

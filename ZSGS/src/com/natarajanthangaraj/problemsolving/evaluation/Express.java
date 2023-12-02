@@ -11,7 +11,7 @@ public class Express {
 
 	private static void validOrNot(String s) {	
 		String symbol="+-*%/";
-		char x='a';
+		char x=' ';
 		boolean flag=true;
 		int stack=0;
 		for(int i=0;i<s.length();i++) {
@@ -25,7 +25,7 @@ public class Express {
 			} 
 			stack--;
 		 }else if(symbol.contains(x+"")) {
-			 if(s.charAt(i-1)=='('||s.charAt(i+1)==')') {
+			 if((i==0||i==s.length()-1)||s.charAt(i-1)=='('||s.charAt(i+1)==')') {
 				 flag=false;
 				 break;
 			 }

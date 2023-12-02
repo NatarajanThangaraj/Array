@@ -13,6 +13,9 @@ public class ZigZag {
 	}
 
 	private static void pattern(int n, String s) {
+		if(n==1) {
+           System.out.println(s);
+		}else {
 		char[][] arr = new char[n][s.length()/2+1];
 		int index = 0;
 		int i = 0, j = 0;
@@ -45,5 +48,6 @@ public class ZigZag {
 			}
 			System.out.println();
 		}
+	}
 	}
 }
