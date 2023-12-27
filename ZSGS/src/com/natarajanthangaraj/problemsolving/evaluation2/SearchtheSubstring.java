@@ -61,9 +61,9 @@ public class SearchtheSubstring {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Enter the String :");
 		String str = scan.next();
-		System.out.print("Enter the Row Length : ");
+		System.out.print("Enter the Column Length : ");
 		int n = scan.nextInt();
-		char[][] inputArray = new char[(str.length() / n) + 1][n];
+		char[][] inputArray = new char[(str.length() / n)+1][n];
 		int index = 0;
 		for (int i = 0; i < inputArray.length; i++) {
 			for (int j = 0; j < n && index < str.length(); j++) {

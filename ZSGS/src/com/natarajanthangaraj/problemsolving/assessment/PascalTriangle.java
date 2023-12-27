@@ -1,4 +1,4 @@
-package com.natarajanthangaraj.problemsolving.evaluation3;
+package com.natarajanthangaraj.problemsolving.assessment;
 
 import java.util.Scanner;
 
@@ -33,11 +33,16 @@ public class PascalTriangle {
 	}
 
 	private void display(int[][] arr) {
+		int index=0;
 		for (int i = 0; i < arr.length; i++) {
+			for(int k=0;k<arr.length-index;k++) {
+				System.out.printf("%2s","");
+			}
 			for (int j = 0; j < arr[i].length; j++) {
-				System.out.printf("%3d", arr[i][j]);
+				System.out.printf("%4d", arr[i][j]);
 			}
 			System.out.println();
+			index++;
 		}
 
 	}

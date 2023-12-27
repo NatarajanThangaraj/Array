@@ -1,4 +1,4 @@
-package com.natarajanthangaraj.problemsolving.evaluation3;
+package com.natarajanthangaraj.problemsolving.assessment;
 
 import java.util.Scanner;
 
