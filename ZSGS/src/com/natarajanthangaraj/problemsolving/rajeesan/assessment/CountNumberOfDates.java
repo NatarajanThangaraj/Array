@@ -4,7 +4,7 @@ public class CountNumberOfDates {
 
 	public static void main(String[] args) {
 		String day1 = "25-08-1998";
-		String day2 = "27-09-2020";
+		String day2 = "27-09-2023";
 		CountNumberOfDates day = new CountNumberOfDates();
 		System.out.println("Number of Days between " + day1 + " and " + day2 + " is : " + day.countDays(day1, day2));
 	}
