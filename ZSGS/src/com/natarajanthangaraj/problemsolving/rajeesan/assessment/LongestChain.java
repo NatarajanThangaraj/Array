@@ -1,15 +1,14 @@
 package com.natarajanthangaraj.problemsolving.rajeesan.assessment;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class LongestChain {
 
 	public static void main(String[] args) {
-		int[][]matrix= {{5,24},{39,60},{15,28},{27,40},{50,90}};
+		int[][]matrix= {{1, 2}, {2, 5}, {5, 7}, {3, 4}, {8, 9}};
 		 System.out.println(" Number of pairs : "+numberOfPairs(matrix));
 	}
 
@@ -19,12 +18,14 @@ public class LongestChain {
 		list.add(matrix[0]);
 		int current=matrix[0][1];
 		for(int i=1;i<matrix.length;i++) {
-			if(matrix[i][0]>current) {
+			if(matrix[i][0]>=current) {
 				list.add(matrix[i]);
 				current=matrix[i][1];
 			}
 		}
-		System.out.println(list);
+		for(int [] arr:list) {
+			System.out.println(Arrays.toString(arr));
+		}
 		return list.size();
 	}
 
