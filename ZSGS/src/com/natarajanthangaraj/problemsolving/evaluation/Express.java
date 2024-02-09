@@ -25,12 +25,13 @@ public class Express {
 			} 
 			stack--;
 		 }else if(symbol.contains(x+"")) {
-			 if((i==0||i==s.length()-1)||s.charAt(i-1)=='('||s.charAt(i+1)==')') {
+			
+			 if((i==0||i==s.length()-1)||(s.charAt(i-1)=='('&&s.charAt(i+1)==')')||(s.charAt(i-1)!='('&&s.charAt(i+1)==')')) {
 				 flag=false;
 				 break;
 			 }
 		 }
-		 
+		// ((a+b)+(c-))
 		}
 		if(flag&&stack==0) {
 			System.out.println("Valid");

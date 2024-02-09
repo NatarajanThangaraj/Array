@@ -3,10 +3,15 @@ package com.natarajanthangaraj.problemsolving.rajeesan.assessment.flightticketbo
 import java.io.Serializable;
 
 public class Passenger implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID =-474172690599806653L;
 	private String name;
 	private int age;
 	private String gender;
 	private int id;
+	private int flightNumber;
 
 	public String getName() {
 		return name;
@@ -38,5 +43,13 @@ public class Passenger implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getFlightNumber() {
+		return flightNumber;
+	}
+
+	public void setFlightNumber(int flightNumber) {
+		this.flightNumber = flightNumber;
 	}
 }

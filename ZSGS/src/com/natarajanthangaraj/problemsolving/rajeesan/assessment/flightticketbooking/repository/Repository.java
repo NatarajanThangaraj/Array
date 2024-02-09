@@ -1,8 +1,8 @@
 package com.natarajanthangaraj.problemsolving.rajeesan.assessment.flightticketbooking.repository;
 
-import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -10,64 +10,92 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.natarajanthangaraj.problemsolving.rajeesan.assessment.flightticketbooking.dto.Flight;
+import com.natarajanthangaraj.problemsolving.rajeesan.assessment.flightticketbooking.dto.Ticket;
 
 public class Repository implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3616973248033900905L;
-	private List<Flight>allFlights;
+	private static final long serialVersionUID = 1L;
+	private List<Flight> allFlights;
+	private List<Ticket> tickets;
 	private static Repository repository;
-	private final String flightURL = "C:\\Users\\ELCOT\\eclipse-workspace\\ZSGS\\ZSGS\\src\\com\\natarajanthangaraj\\problemsolving\\rajeesan\\assessment\\flightticketbooking\\repository\\Flight.ser";
+	private static final String flightURL = "C:\\Users\\ELCOT\\eclipse-workspace\\ZSGS\\ZSGS\\src\\com\\natarajanthangaraj\\problemsolving\\rajeesan\\assessment\\flightticketbooking\\repository\\Flight.ser";
+
 	private Repository() {
-		allFlights=new ArrayList<>();
+		this.allFlights = new ArrayList<>();
+		this.tickets=new ArrayList<>();
 	}
+
 	public static Repository getInstance() {
 		if (repository == null) {
-			repository = new Repository();
+			loadPreviousData();
+
 		}
 		return repository;
 	}
 
-	public boolean createFlightRoutes(List<Flight> listOfFlights) {
+	private static void loadPreviousData() {
+		repository = new Repository();
 		try {
-			FileOutputStream fos = new FileOutputStream(flightURL);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			listOfFlights.addAll(getAllFlight());
-			allFlights=listOfFlights;
-//			for (Flight flight : listOfFlights) {
-//				allFlights.add(flight);
-//			}
-			System.out.println(allFlights);
-			oos.writeObject(allFlights);
-			oos.flush();
-			oos.close();
-			return true;
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(flightURL));
+			repository = (Repository) ois.readObject();
+			ois.close();
 		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return false;
-	}
-
-	
-	@SuppressWarnings({ "unchecked"})
-	public List<Flight> getAllFlight() {
-		List<Flight> flights = new ArrayList<>();
-		try {
-			FileInputStream fis = new FileInputStream(flightURL);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			try {
-					flights=(List<Flight>)ois.readObject();
-			}catch(EOFException e) {
-				System.out.println();
-			}
-			       ois.close();
-		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
-		// System.out.println(flights);
-		return flights;
+		if (repository.tickets == null) {
+	        repository.tickets = new ArrayList<>();
+	    }
+
+	}
+
+	public boolean createFlightRoutes(List<Flight> listOfFlights) {
+		for (Flight flight : listOfFlights) {
+			allFlights.add(flight);
+		}
+		updateInDataBase();
+		return true;
+
+	}
+	public boolean storeTickets(Ticket ticket) {
+		tickets.add(ticket);
+		updateInDataBase();
+		return true;
+	}
+
+	private void updateInDataBase() {
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(flightURL));
+			oos.writeObject(repository);
+			oos.flush();
+			oos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setAllFlights(List<Flight> flights) {
+		this.allFlights = flights;
+	}
+
+	public List<Flight> getAllFlights() {
+		return allFlights;
+	}
+
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+
+	public boolean addTicket(Ticket ticket) {
+		List<Ticket>list=getTickets();
+		for(Ticket eachTicket: list) {
+			if(eachTicket.getPNRNumber()==ticket.getPNRNumber()) {}
+			eachTicket=ticket;
+			break;
+		}
+		updateInDataBase();
+		return true;
 	}
 }
