@@ -21,13 +21,14 @@ public  void showAllRoutes() {
 	 Set<String>flightSet=new HashSet<>();
 	 List<String> routes;
 	 List<Flight>flightList=reserveViewModel.getAllFlights();
+	 System.out.println(flightList);
 	 for(Flight flight:flightList) {
 		 routes=flight.getList();
 		 for(String city:routes) {
 			 flightSet.add(city);
 		 }
 	 }
-	
+	System.out.println(flightSet);
 	 System.out.println("\n THE ALL ROUTES OF FLIGHT \n");
 	 int n=1;
 	 for(String city : flightSet) {

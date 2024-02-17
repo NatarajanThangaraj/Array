@@ -9,7 +9,6 @@ import com.natarajanthangaraj.problemsolving.rajeesan.assessment.flightticketboo
 public class Main {
 
 	public static void main(String[] args) {
-
 		ApplicationView view=new ApplicationView();
 		view.start();
 	}
