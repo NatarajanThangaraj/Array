@@ -4,7 +4,7 @@ Output: 49*/
 public class ContainerWithMostWater {
 	
 	public static void main(String[] args) {
-		int[]height = {1,1};
+		int[]height = {2,3,4,5,18,17,6};
 			System.out.println(" Max Area : "+maxArea(height));
 	}
 

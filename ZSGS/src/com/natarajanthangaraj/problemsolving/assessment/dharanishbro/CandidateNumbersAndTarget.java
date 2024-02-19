@@ -15,7 +15,7 @@ public class CandidateNumbersAndTarget {
 
 	public static void main(String[] args) {
 		int[] candidates = {10,1,2,7,6,1,5};
-		int target=8;
+		int target=11;
 		Arrays.sort(candidates);
 		List<List<Integer>>list=new ArrayList<>();
 		combinations(0,candidates,list,new ArrayList<Integer>(),target);

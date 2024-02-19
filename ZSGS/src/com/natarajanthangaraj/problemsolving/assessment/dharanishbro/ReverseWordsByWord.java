@@ -14,25 +14,18 @@ public class ReverseWordsByWord {
 	}
 
 	private static String reverseWords(String str) {
-		int start=0,end=0,len=str.length();
-		List<String>list=new ArrayList<>();
+		int len=str.length();
+		int start=len,end=len-1;
 		StringBuilder sb=new StringBuilder();
-		while(end<len) {
-		while(end<len&&str.charAt(end)!=' ') {
-			end++;
+		while(end>=0) {
+		while(end>=0&&str.charAt(end)!=' ') {
+			end--;
 		}
 		
-		list.add(str.substring(start,end));
-		end++;
-		start=end;
+		sb.append(str.substring(end+1,start)+" ");
+		end--;
+		start=end+1;
 		
-		}
-		for(int i=list.size()-1;i>=0;i--) {
-			if(i!=0)
-			sb.append(list.get(i)+" ");
-			else {
-				sb.append(list.get(i));
-			}
 		}
 		return sb.toString();
 	}
